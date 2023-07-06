@@ -1,8 +1,8 @@
 import openai
 import warnings
 import ipywidgets as widgets
+from pytest import console_main
 from app_config import API_KEY
-warnings.filterwarnings('ignore')
 
 class Gpt_Api:
 
@@ -104,6 +104,7 @@ class Gpt_Api:
     def trigger_api(self, event):
         ''' the function which triggers open ai api and prints response from the api '''
         response = self.get_completion(self.user_input.value)
+        console_main.log(response)
         self.output_widget.clear_output()
         with self.output_widget:
             print(response)
